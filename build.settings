@@ -1,0 +1,58 @@
+-- Supported values for orientation:
+-- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+
+settings = {
+
+    orientation = {
+        default = "portrait",
+        supported = { "portrait", }
+    },
+    
+    iphone = {
+        plist = {
+            UIBackgroundModes = {"remote-notification"},
+            UIStatusBarHidden = false,
+            UIPrerenderedIcon = true, -- set to false for "shine" overlay
+            --UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
+
+            --[[
+            -- iOS app URL schemes:
+            CFBundleURLTypes =
+            {
+                {
+                    CFBundleURLSchemes =
+                    {
+                        "fbXXXXXXXXXXXXXX", -- example scheme for facebook
+                        "coronasdkapp", -- example second scheme
+                    }
+                }
+            }
+            --]]
+        }
+    },
+    android =
+    {
+        usesPermissions =
+        {
+            -- Permission to access the GPS.
+            "android.permission.ACCESS_FINE_LOCATION",
+
+            -- Permission to retrieve current location from WiFi or cellular service.
+            "android.permission.ACCESS_COARSE_LOCATION",
+            
+            -- Permission to retrieve
+            "android.permission.WRITE_INTERNAL_STORAGE",
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            
+        },
+    },
+    
+     --[[ plugins =
+    {
+        ["plugin.google.play.services"] =
+        {
+            publisherId = "com.coronalabs",
+            supportedPlatforms = { android=true },
+        },
+    },   --]]
+}
